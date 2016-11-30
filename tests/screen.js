@@ -13,7 +13,7 @@ function Screen (casper, testConfig) {
   }
 
   self.capture = (name) => {
-    casper.capture(`./captures/${self.testConfig.name}/${lpad(`${self.captureIndex}`)}_${name}.png`)
+    casper.capture(`./captures/${self.testConfig.name.replace(' ', '-')}/${lpad(`${self.captureIndex}`)}_${name.replace(' ', '-')}.png`)
     self.captureIndex++
   }
 }
