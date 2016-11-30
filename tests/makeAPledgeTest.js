@@ -2,6 +2,13 @@
 const pages = require('./pages')
 const page = pages.makeAPledge
 
+const config = {
+  name: 'make-a-pledge'
+}
+
+const Screen = require('./Screen')
+const screen = new Screen(casper, config)
+
 const tests = {
   onLoad: [
     (test) => test.assertVisible(page.selectors.step1),
@@ -23,7 +30,7 @@ const totalTests = tests.onLoad.length + tests.step2.length + tests.step3.length
 
 casper.test.begin('Make a Pledge', totalTests, function (test) {
   casper.start(page.url, function () {
-    casper.capture('./captures/make-a-pledge/initial-load.png')
+    screen.capture('initial-load')
     tests.onLoad.forEach(t => t(test))
   })
 
@@ -32,37 +39,37 @@ casper.test.begin('Make a Pledge', totalTests, function (test) {
     nameFormFields[page.selectors.firstName] = 'Liz'
     nameFormFields[page.selectors.lastName] = 'Lemon'
     casper.fillSelectors(page.selectors.form, nameFormFields, false)
-    casper.capture('./captures/make-a-pledge/name-filled-in.png')
+    screen.capture('name-filled-in')
   })
 
   casper.then(() => {
     const emailFormFields = {}
     casper.click(page.selectors.haveExperienceOfHomelessnessButton)
     casper.waitUntilVisible('.accordion__item.is-active .accordion__inner', () => {
-      casper.capture('./captures/make-a-pledge/category-selected.png')
+      screen.capture('category-selected')
       emailFormFields[page.selectors.customPledge] = 'my custom pledge'
       casper.fillSelectors(page.selectors.form, emailFormFields, false)
-      casper.capture('./captures/make-a-pledge/custom-pledge-filled-in.png')
+      screen.capture('custom-pledge-filled-in')
     })
   })
 
   casper.then(() => {
     casper.click(page.selectors.makeCustomPledgeButton)
     casper.waitUntilVisible(page.selectors.step2, () => {
-      casper.capture('./captures/make-a-pledge/step2.png')
+      screen.capture('step2')
       const otherFormFields = {}
       otherFormFields[page.selectors.email] = 'liz.lemon@tgs.com'
       casper.fillSelectors(page.selectors.form, otherFormFields, false)
-      casper.capture('./captures/make-a-pledge/email-filled-in.png')
+      screen.capture('email-filled-in')
       casper.click(page.selectors.submitPledgeButton)
-      casper.capture('./captures/make-a-pledge/pledge-submitted.png')
+      screen.capture('pledge-submitted')
       tests.step2.forEach(t => t(test))
     })
   })
 
   casper.then(() => {
     casper.waitUntilVisible(page.selectors.step3, () => {
-      casper.capture('./captures/make-a-pledge/step3.png')
+      screen.capture('step3')
       tests.step3.forEach(t => t(test))
     })
   })
