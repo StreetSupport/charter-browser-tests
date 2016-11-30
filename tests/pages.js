@@ -8,7 +8,10 @@ const domain = root.match(/^https?:\/\/(.*):?.*\/$/)[1]
 const pages = {
   domain: domain,
   home: {
-    url: root
+    url: root,
+    selectors: {
+      mainTitle: '.block__header'
+    }
   }
 }
 
