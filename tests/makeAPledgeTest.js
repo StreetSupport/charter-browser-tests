@@ -6,7 +6,7 @@ const config = {
   name: 'make-a-pledge'
 }
 
-const Screen = require('./Screen')
+const Screen = require('./screen')
 const screen = new Screen(casper, config)
 
 const tests = {
