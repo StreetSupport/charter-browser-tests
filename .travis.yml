@@ -13,3 +13,6 @@ before_script:
 - npm install -g phantomjs
 - chmod +x ./deploy-website.sh
 script: "./deploy-website.sh"
+notifications:
+  slack:
+    secure: dudkTdlDYM/y68QBgEmSNVGlMRPK9Ob2G4VbTkunnaK4PyGWusA6rrNEZM4sKIvX/N3+dwrDl8NYt10wbyGIkROpW0pH1FPId23GM+dCL+4W+o2aYpdgEEaeI0DhUWEn2AB3OFD2eYAUb7MhH5Gz9u9Q68TmkzWmSou4tDJxaXpp8GC1ucdiqey1X43pSAHDccRHkuc0PS+UlGOzzag6KLr2KBBnchSGa9Evc+9W8zMxvFFjUF6Lw6klCKnQVBFgFUeSKEeR1y5Lwm/hyaRmCBa+pS6R+P7+10l2zU6nK/ghAZaVQMDlgCIVgF1naMzziKOVFddaFpSf8bWjuhUn2Wq9UfDVZcB3o65yZzh/ooQtd1M+ZyvwY41BHqOatn2vZ8Vzv3RDAPkdEO3Pxytw1xcDVTXEwZt1fJH/FdzyGrbnUwsCJgs+R+j+9MtE+kz7IoPVA3acb18jEAJxqy7512JHFPMB1L4tBbNR6RxeNeBnGVtqeESQA9PiYGl6UVnyDcrlRN31ail00Dgo/DTo4nILHBm97pndKqAudqGTZEg+K++bHc3OTcK6CusHIURPf8LmiyiIeeeBodKFkb16J/o1G+GRQaGQ807kNlWZp1ySNCjWI/3pk7DopZmXY2UWPm9z7apm7H8FjNV+NsqfTSOkkjEznWw+iLp6/WvxCU4=
