@@ -25,7 +25,7 @@ gulp.task('build', ['clean'], () => {
     .pipe(gulp.dest(config.outputDir))
 })
 
-gulp.task('casper', ['build', 'warm-api'], () => {
+gulp.task('casper', () => {
   return gulp
     .src(config.outputDir + '/**/*Test.js')
     .pipe(casperJs({
@@ -50,6 +50,8 @@ gulp.task('dev', (callback) => {
 
 gulp.task('default', (callback) => {
   runSequence(
+    'warm-api',
+    'build',
     'casper',
     callback
   )
